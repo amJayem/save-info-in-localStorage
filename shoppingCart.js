@@ -44,3 +44,17 @@ const displayProducts = (product,quantity) => {
     li.innerHTML = `${product} : ${quantity}`;
     displayContainer.appendChild(li);
 }
+
+const displaySavedProducts = () =>{
+    const cart = getSavedInfoFromLocalStorage();
+    console.log(cart);
+
+    for(const product in cart){
+        const quantity = cart[product];
+        console.log(product,quantity);
+        displayProducts(product,quantity);
+    }
+}
+
+// default as display saved items
+displaySavedProducts();

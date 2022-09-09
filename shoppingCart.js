@@ -16,8 +16,18 @@ const addProducts = () =>{
     displayProducts(product,quantity);
 }
 
-const storeItemToLocalStorage = (product,quantity) =>{
+const getSavedInfoFromLocalStorage = () =>{
     let cart = {};
+    let savedCart = localStorage.getItem('cart');
+
+    if(savedCart){
+        cart = JSON.parse(savedCart);
+    }
+    return cart;
+}
+
+const storeItemToLocalStorage = (product,quantity) =>{
+    let cart = getSavedInfoFromLocalStorage();
 
     // add product to the object as property 
     cart[product] = quantity;
